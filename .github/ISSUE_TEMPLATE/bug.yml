@@ -1,0 +1,53 @@
+name: Bug
+description: A skill did the wrong thing in a real session. One bug per issue.
+labels: [bug]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Keep it short and put the repro first. If an agent wrote this for you, cut it down to the repro before you post. See [CONTRIBUTING.md](https://github.com/NavinduNavoda/skills/blob/main/CONTRIBUTING.md).
+  - type: input
+    id: skill
+    attributes:
+      label: Skill
+      description: Which skill, e.g. `start-rat`, `testing`.
+    validations:
+      required: true
+  - type: input
+    id: version
+    attributes:
+      label: Commit
+      description: The commit SHA you installed from (`git rev-parse --short HEAD` in your clone).
+      placeholder: 0a87cd3
+    validations:
+      required: true
+  - type: input
+    id: harness
+    attributes:
+      label: Harness and model
+      description: e.g. Claude Code 2.3.1, Opus, high effort.
+    validations:
+      required: true
+  - type: textarea
+    id: what-happened
+    attributes:
+      label: What happened
+      description: The smallest steps that show the bug, and what the skill did. Paste the relevant part of the session.
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: What you expected
+      description: What the skill should have done instead, and which line of the SKILL.md says so, if any.
+    validations:
+      required: true
+  - type: checkboxes
+    id: checks
+    attributes:
+      label: Checks
+      options:
+        - label: This issue is about one problem.
+          required: true
+        - label: I searched open and closed issues for a duplicate.
+          required: true

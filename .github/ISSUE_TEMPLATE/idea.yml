@@ -1,0 +1,38 @@
+name: Idea
+description: A change to an existing skill, or a new skill. One idea per issue.
+labels: [enhancement]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Ideas grounded in something that went wrong in a real session are the easiest to act on. See [CONTRIBUTING.md](https://github.com/NavinduNavoda/skills/blob/main/CONTRIBUTING.md).
+  - type: input
+    id: skill
+    attributes:
+      label: Skill
+      description: Which existing skill this changes, or "new" for a new skill.
+    validations:
+      required: true
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem
+      description: What went wrong or what is missing. If it came from a real session, say what you ran and what happened.
+    validations:
+      required: true
+  - type: textarea
+    id: change
+    attributes:
+      label: Proposed change
+      description: The smallest change that fixes it. Describe it. Don't paste a rewritten SKILL.md.
+    validations:
+      required: true
+  - type: checkboxes
+    id: checks
+    attributes:
+      label: Checks
+      options:
+        - label: This issue is about one idea.
+          required: true
+        - label: I searched open and closed issues for a duplicate.
+          required: true
