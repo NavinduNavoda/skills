@@ -18,6 +18,6 @@ This skill uses the shared relay files in `../start-relay/`, next to this skill'
 
 Also mention these when they fit what the user said:
 - `/why-relay <WHY comment or file:line>` when a choice in the code is unclear.
-- `/nv-adr` when the user stated a rule that should hold for the whole project.
+- `/to-adr` when the user stated a rule that should hold for the whole project.
 
 Show the plan file path from `status` so the user can open it.

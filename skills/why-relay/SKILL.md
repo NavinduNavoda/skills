@@ -18,4 +18,4 @@ The user is a junior developer and wants to learn, not only to hear the answer. 
 
 3. **Check understanding.** End with one short question the user can answer to test themselves. Don't quiz further unless they want it.
 
-4. If the user disagrees with the decision and wants it changed, say they can edit the code before `/next-relay`, or run `/nv-adr` if the rule should hold for the whole project.
+4. If the user disagrees with the decision and wants it changed, say they can edit the code before `/next-relay`, or run `/to-adr` if the rule should hold for the whole project.

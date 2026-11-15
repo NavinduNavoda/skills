@@ -22,7 +22,7 @@ NO_COMMENT_EXT = {".json", ".md", ".markdown", ".txt", ".lock", ".csv"}
 DEP_DIRS = ["node_modules", ".venv", "venv"]
 LOCK_STALE_SECONDS = 30 * 60
 SLUG_RE = re.compile(r"^[a-z0-9]+(?:-[a-z0-9]+)*$")
-# /nv-adr commits ADRs on their own, so they never count as part of a feature commit.
+# /to-adr commits ADRs on their own, so they never count as part of a feature commit.
 FEATURE_PATHS = ["--", ".", ":(exclude)docs/adr"]
 
 PLAN_TEMPLATE = """# {id}: {title}

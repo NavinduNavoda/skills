@@ -13,7 +13,7 @@ npx skills add NavinduNavoda/skills -s '*'
 Install only the relay flow and the shared skills it reads:
 
 ```bash
-npx skills add NavinduNavoda/skills -s start-relay next-relay why-relay status-relay nv-coding-style nv-testing nv-adr nv-git-workflow nv-writing-style
+npx skills add NavinduNavoda/skills -s start-relay next-relay why-relay status-relay nv-coding-style nv-testing to-adr nv-git-workflow nv-writing-style
 ```
 
 Add `-g` to install for every project instead of the current one. Install the relay skills in the same scope, because `next-relay`, `why-relay` and `status-relay` use files from `start-relay`. Update them together with `npx skills update`.
@@ -39,7 +39,7 @@ Flows read these when they are installed. You can also run them directly.
 
 - [`nv-coding-style`](./skills/nv-coding-style/SKILL.md): line-level code style, plus architecture, API, data, config and logging standards.
 - [`nv-testing`](./skills/nv-testing/SKILL.md): which code gets tests and how to write them.
-- [`nv-adr`](./skills/nv-adr/SKILL.md): turn a decision from chat into a numbered ADR in `docs/adr/`.
+- [`to-adr`](./skills/to-adr/SKILL.md): turn a decision from chat into a numbered ADR in `docs/adr/`.
 - [`nv-git-workflow`](./skills/nv-git-workflow/SKILL.md): branch names, Conventional Commits and pull request rules.
 - [`nv-writing-style`](./skills/nv-writing-style/SKILL.md): plain, specific prose for commits, pull requests, plans and docs.
 

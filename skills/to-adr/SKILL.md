@@ -1,5 +1,5 @@
 ---
-name: nv-adr
+name: to-adr
 description: Turn a decision the user made in chat into a numbered Architecture Decision Record in docs/adr/.
 disable-model-invocation: true
 argument-hint: "The decision, or leave empty to use the last one from chat"
