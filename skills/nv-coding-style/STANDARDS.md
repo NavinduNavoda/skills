@@ -1,6 +1,6 @@
 # Coding standards
 
-Applies to every repo when writing or reviewing code. A repo's own `CODING_STANDARDS.md` overrides this file where they disagree.
+Part of the `nv-coding-style` skill. Applies when designing or reviewing code. A repo's own `CODING_STANDARDS.md` overrides this file where they disagree.
 
 ## Architecture and loose coupling
 
@@ -66,4 +66,4 @@ Valuable domain data is soft deleted: removal sets `is_removed = true`. Transien
 
 ## Testing
 
-See the `testing` skill (`~/.agents/skills/testing/SKILL.md`).
+See the `nv-testing` skill (`../nv-testing/SKILL.md`), if it is installed.

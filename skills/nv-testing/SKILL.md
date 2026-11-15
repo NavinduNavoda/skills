@@ -1,6 +1,7 @@
 ---
-name: testing
-description: Decide which code gets tests and how to write them. Use when writing, adding, reviewing, or deciding on tests, or when building a feature or commit that may need them.
+name: nv-testing
+description: Decide which code gets tests and how to write them. Relay builds read it. Run it to apply the rules outside a flow.
+disable-model-invocation: true
 ---
 
 # Testing
