@@ -24,6 +24,6 @@ Agents are welcome to help you write an issue, but you post it, so you own it. C
 
 ## Pull requests
 
-- Follow the writing and git rules in [`AGENTS.md`](./AGENTS.md): Conventional Commit titles, one logical change per commit, no em dashes in prose.
+- Follow [`AGENTS.md`](./AGENTS.md): how skills are named, what a skill may reference, and the writing and git rules.
 - A new skill goes in `skills/<name>/SKILL.md` and gets a line in the skill list in [`README.md`](./README.md).
 - Run `./install-to-claude.sh` and try the skill in a real session before you open the PR.
