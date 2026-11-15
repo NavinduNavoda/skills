@@ -27,3 +27,7 @@ This repo ships agent skills through skills.sh (`npx skills add NavinduNavoda/sk
 ## Writing and git
 
 Follow `skills/nv-writing-style/SKILL.md` for prose, including `SKILL.md` files, and `skills/nv-git-workflow/SKILL.md` for branches, commits and pull requests.
+
+## Releases
+
+release-please runs on every push to `main` and keeps a release PR open. Merging that PR tags the release, writes `CHANGELOG.md` and updates the install tag in `README.md`. Commit types set the version: `feat:` bumps the minor version, `fix:` the patch. Keep the README install commands between the `x-release-please` markers.
