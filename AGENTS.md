@@ -30,4 +30,4 @@ Follow `skills/nv-writing-style/SKILL.md` for prose, including `SKILL.md` files,
 
 ## Releases
 
-release-please runs on every push to `main` and keeps a release PR open. Merging that PR tags the release, writes `CHANGELOG.md` and updates the install tag in `README.md`. Commit types set the version: `feat:` bumps the minor version, `fix:` the patch. Keep the README install commands between the `x-release-please` markers.
+release-please runs on every push to `main` and keeps a release PR open. Merging that PR tags the release, writes `CHANGELOG.md` and moves the `latest` tag to it, which the README install command uses. Commit types set the version: `feat:` bumps the minor version, `fix:` the patch, and a breaking change the major.
