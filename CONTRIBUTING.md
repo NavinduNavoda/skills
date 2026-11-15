@@ -2,6 +2,8 @@
 
 These are the skills I use every day. Bug reports and ideas are welcome.
 
+Everyone taking part follows the [code of conduct](./CODE_OF_CONDUCT.md). Report security problems privately, as [`SECURITY.md`](./SECURITY.md) describes, not in an issue.
+
 ## Where each request goes
 
 | You have | Do this |
