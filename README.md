@@ -4,21 +4,13 @@ Agent skills for building software in small, reviewable commits. They install wi
 
 ## Install
 
-Install everything from the latest release:
-
-<!-- x-release-please-start-version -->
-```bash
-npx skills add NavinduNavoda/skills@v1.0.0 -s '*'
-```
-
-Install only the relay flow and the shared skills it reads:
+Install every skill from the latest release:
 
 ```bash
-npx skills add NavinduNavoda/skills@v1.0.0 -s start-relay next-relay why-relay status-relay nv-coding-style nv-testing to-adr nv-git-workflow nv-writing-style
+npx skills add NavinduNavoda/skills@latest -s '*'
 ```
-<!-- x-release-please-end -->
 
-Add `-g` to install for every project instead of the current one. Install the relay skills in the same scope, because `next-relay`, `why-relay` and `status-relay` use files from `start-relay`. To upgrade, run the install command again with the new tag from [Releases](https://github.com/NavinduNavoda/skills/releases). Leave out `@<tag>` to install the latest commit on `main` instead.
+Add `-g` to install for every project instead of the current one. If you pick skills one by one, install the relay skills together and in the same scope, because `next-relay`, `why-relay` and `status-relay` use files from `start-relay`. To upgrade, run the install command again. Leave out `@latest` to install the newest commit on `main` instead.
 
 Every skill runs only when you type it or a flow reads it. None of them loads on its own, so they don't override your own skills or rules.
 

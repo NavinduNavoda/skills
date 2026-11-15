@@ -4,10 +4,7 @@
     ".": {
       "release-type": "simple",
       "package-name": "skills",
-      "include-component-in-tag": false,
-      "extra-files": [
-        "README.md"
-      ]
+      "include-component-in-tag": false
     }
   }
 }
