@@ -7,10 +7,10 @@ Agent skills for building software in small, reviewable commits. They install wi
 Install every skill from the latest release:
 
 ```bash
-npx skills add NavinduNavoda/skills@latest -s '*'
+npx skills add NavinduNavoda/skills#latest -s '*'
 ```
 
-Add `-g` to install for every project instead of the current one. If you pick skills one by one, install the relay skills together and in the same scope, because `next-relay`, `why-relay` and `status-relay` use files from `start-relay`. To upgrade, run the install command again. Leave out `@latest` to install the newest commit on `main` instead.
+Add `-g` to install for every project instead of the current one. If you pick skills one by one, install the relay skills together and in the same scope, because `next-relay`, `why-relay` and `status-relay` use files from `start-relay`. To upgrade, run the install command again. Leave out `#latest` to install the newest commit on `main` instead.
 
 Every skill runs only when you type it or a flow reads it. None of them loads on its own, so they don't override your own skills or rules.
 
