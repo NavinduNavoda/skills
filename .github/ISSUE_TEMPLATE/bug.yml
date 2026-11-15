@@ -10,7 +10,7 @@ body:
     id: skill
     attributes:
       label: Skill
-      description: Which skill, e.g. `start-rat`, `testing`.
+      description: Which skill, e.g. `start-relay`, `nv-testing`.
     validations:
       required: true
   - type: input

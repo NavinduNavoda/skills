@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Symlink AGENTS.md, skills and agents from this repo into ~/.claude.
+# Symlink each skill and agent in this repo into ~/.claude, for working on the skills.
 # Safe to re-run: existing links are replaced, real files are backed up first.
 set -euo pipefail
 shopt -s nullglob
@@ -28,8 +28,6 @@ prune() {
 }
 
 mkdir -p "$claude/skills" "$claude/agents"
-
-link "$repo/AGENTS.md" "$claude/CLAUDE.md"
 
 for d in "$repo"/skills/*/; do
   link "${d%/}" "$claude/skills/$(basename "$d")"

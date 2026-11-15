@@ -1,11 +1,12 @@
 ---
-name: coding-style
-description: Line-level code style for any language. Use when writing, changing, or reviewing code.
+name: nv-coding-style
+description: Line-level code style for any language, plus architecture, API, data, config and logging standards. Relay builds read it. Run it to apply the style outside a flow.
+disable-model-invocation: true
 ---
 
 # Coding style
 
-How code reads line by line, in any language. Architecture, APIs, data and logging live in `~/.agents/standards/coding-standards.md`, tests in the `testing` skill. A repo's own `CODING_STANDARDS.md` overrides all three.
+How code reads line by line, in any language. Read `STANDARDS.md` in this folder before designing modules, APIs, data access, configuration or logging. Tests follow `../nv-testing/SKILL.md` if it is installed. A repo's own `CODING_STANDARDS.md` overrides all three.
 
 The measure behind every rule is **reader load**: how many layers a reader must trace and how much state they must hold to answer "where does this value come from?" and "what can change it?".
 
@@ -52,6 +53,8 @@ The measure behind every rule is **reader load**: how many layers a reader must 
 - **None by default.** Rename, extract a function, or add a type instead.
 - **Allowed:** license headers, doc comments on APIs other modules import (not `internal/`), links to
   issues or vendor docs for constraints the code cannot express, and tooling directives.
+- **`WHY:` lines are review notes, not comments.** The relay flow adds them for the reviewer and its script
+  removes them before each commit.
 
 ## Changes
 

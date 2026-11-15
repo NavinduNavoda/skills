@@ -1,47 +1,53 @@
 # skills
 
-My agent skills for Claude Code, plus the global `AGENTS.md` and coding standards they rely on.
+Agent skills for building software in small, reviewable commits. They install with [skills.sh](https://skills.sh) into Claude Code, Codex and other agents.
 
 ## Install
 
-```bash
-git clone git@github.com:NavinduNavoda/skills.git
-cd skills
-./install-to-claude.sh
-```
-
-The script symlinks each folder in `skills/` into `~/.claude/skills/` and links `AGENTS.md` to `~/.claude/CLAUDE.md`. That replaces your global `CLAUDE.md` with this repo's, so read [`AGENTS.md`](./AGENTS.md) first. The script moves any real file it would replace to `<name>.bak.<timestamp>`.
-
-Because the installed skills are symlinks, `git pull` updates them. Re-run the script after a skill is added, removed or renamed. It also deletes broken links that point into this repo. Set `CLAUDE_CONFIG_DIR` to install somewhere other than `~/.claude`.
-
-To remove the links and move your backed-up `CLAUDE.md` back:
+Install everything:
 
 ```bash
-./uninstall-from-claude.sh
+npx skills add NavinduNavoda/skills -s '*'
 ```
+
+Install only the relay flow and the shared skills it reads:
+
+```bash
+npx skills add NavinduNavoda/skills -s start-relay next-relay why-relay status-relay nv-coding-style nv-testing to-adr nv-git-workflow nv-writing-style
+```
+
+Add `-g` to install for every project instead of the current one. Install the relay skills in the same scope, because `next-relay`, `why-relay` and `status-relay` use files from `start-relay`. Update them together with `npx skills update`.
+
+Every skill runs only when you type it or a flow reads it. None of them loads on its own, so they don't override your own skills or rules.
 
 ## Skills
 
-### Rat workflow
+### Relay flow
 
-These skills build a feature as a chain of small commits. You review commit N while a background agent builds commit N+1 in a separate worktree.
+You review commit N while a background agent builds commit N+1 in a separate worktree. When you approve N, the agent brings in N+1, adapted to any edits you made.
 
-- [`start-rat`](./skills/start-rat/SKILL.md): start a feature and plan it as small commits.
-- [`next-rat`](./skills/next-rat/SKILL.md): finalize the commit under review and bring in the next one, adapted to your edits.
-- [`why-rat`](./skills/why-rat/SKILL.md): explain a decision in the current plan in depth, for a junior developer.
-- [`decide-rat`](./skills/decide-rat/SKILL.md): turn a decision from chat into a numbered ADR in `docs/adr/`.
-- [`ask-rats`](./skills/ask-rats/SKILL.md): say which rat skill to run next, based on the plan's state.
-- [`rat-kit`](./skills/rat-kit/SKILL.md): shared scripts and rules for the skills above. You don't run it directly.
+- [`start-relay`](./skills/start-relay/SKILL.md): plan a feature as small commits, build commit 1 and start commit 2 in the background. It also holds the files the other relay skills use.
+- [`next-relay`](./skills/next-relay/SKILL.md): commit the one under review and bring in the next, adapted to your edits.
+- [`why-relay`](./skills/why-relay/SKILL.md): explain a decision in the current plan in depth, for a junior developer.
+- [`status-relay`](./skills/status-relay/SKILL.md): say which relay step to run next, based on the plan's state.
 
-### Code quality
+`start-relay` runs a Python script, `relay.py`. It uses the standard library only, makes no network calls, and runs only `git`. [`SCRIPT.md`](./skills/start-relay/SCRIPT.md) lists what it writes and deletes.
 
-- [`coding-style`](./skills/coding-style/SKILL.md): line-level code style for any language. The model loads it when writing or reviewing code.
-- [`testing`](./skills/testing/SKILL.md): decide which code gets tests and how to write them. The model loads it when tests come up.
-- [`spec-review`](./skills/spec-review/SKILL.md): review a diff against the repo's coding standards and against the issue it came from, in two parallel subagents.
+### Shared
 
-### Learning
+Flows read these when they are installed. You can also run them directly.
 
-- [`teach`](./skills/teach/SKILL.md): teach you a topic over several sessions, with progress saved in the workspace.
+- [`nv-coding-style`](./skills/nv-coding-style/SKILL.md): line-level code style, plus architecture, API, data, config and logging standards.
+- [`nv-testing`](./skills/nv-testing/SKILL.md): which code gets tests and how to write them.
+- [`to-adr`](./skills/to-adr/SKILL.md): turn a decision from chat into a numbered ADR in `docs/adr/`.
+- [`nv-git-workflow`](./skills/nv-git-workflow/SKILL.md): branch names, Conventional Commits and pull request rules.
+- [`nv-writing-style`](./skills/nv-writing-style/SKILL.md): plain, specific prose for commits, pull requests, plans and docs.
+
+A repo's own `CODING_STANDARDS.md`, `AGENTS.md`, `CLAUDE.md` or `CONTRIBUTING.md` wins over the shared skills.
+
+## Working on the skills
+
+`./install-to-claude.sh` symlinks each folder in `skills/` into `~/.claude/skills/`, so edits in your clone apply at once. `./uninstall-from-claude.sh` removes the links. See [`AGENTS.md`](./AGENTS.md) for the repo's rules.
 
 ## Contributing
 

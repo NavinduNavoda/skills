@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Plan state, snapshots and WHY-comment handling for the rat skills.
+"""Plan state, snapshots and WHY-comment handling for the relay skills.
 
 Uses only the Python standard library and git. Every command prints one JSON
 object. On failure it prints {"error": ...} and exits 1, and the calling agent
@@ -22,7 +22,7 @@ NO_COMMENT_EXT = {".json", ".md", ".markdown", ".txt", ".lock", ".csv"}
 DEP_DIRS = ["node_modules", ".venv", "venv"]
 LOCK_STALE_SECONDS = 30 * 60
 SLUG_RE = re.compile(r"^[a-z0-9]+(?:-[a-z0-9]+)*$")
-# /decide-rat commits ADRs on their own, so they never count as part of a feature commit.
+# /to-adr commits ADRs on their own, so they never count as part of a feature commit.
 FEATURE_PATHS = ["--", ".", ":(exclude)docs/adr"]
 
 PLAN_TEMPLATE = """# {id}: {title}
@@ -43,14 +43,14 @@ Branch: `{branch}`. Status: active.
 """
 
 
-class RatError(Exception):
+class RelayError(Exception):
     pass
 
 
 def run(args, cwd=None, env=None, data=None, check=True):
     result = subprocess.run(args, cwd=cwd, env=env, input=data, capture_output=True)
     if check and result.returncode != 0:
-        raise RatError(f"{' '.join(args)}: {result.stderr.decode(errors='replace').strip()}")
+        raise RelayError(f"{' '.join(args)}: {result.stderr.decode(errors='replace').strip()}")
     return result
 
 
@@ -76,7 +76,7 @@ class Repo:
     def branch(self):
         name = self.g("symbolic-ref", "--quiet", "--short", "HEAD", check=False).strip()
         if not name:
-            raise RatError("HEAD is detached; check out a branch first")
+            raise RelayError("HEAD is detached; check out a branch first")
         return name
 
     def state_dir(self, plan_id):
@@ -95,14 +95,14 @@ def load_state(repo, plan_id=None):
     if plan_id:
         path = repo.state_dir(plan_id) / "state.json"
         if not path.exists():
-            raise RatError(f"no plan {plan_id}")
+            raise RelayError(f"no plan {plan_id}")
         return json.loads(path.read_text())
     branch = repo.branch()
     for path in sorted(repo.states.glob("*/state.json")):
         state = json.loads(path.read_text())
         if state["branch"] == branch and state["status"] == "active":
             return state
-    raise RatError(f"no active plan for branch {branch}; run /start-rat")
+    raise RelayError(f"no active plan for branch {branch}; run /start-relay")
 
 
 def save_state(repo, state):
@@ -115,7 +115,7 @@ def commit_entry(state, n):
     for entry in state["commits"]:
         if entry["n"] == n:
             return entry
-    raise RatError(f"plan {state['id']} has no commit {n}")
+    raise RelayError(f"plan {state['id']} has no commit {n}")
 
 
 def find_entry(state, n):
@@ -245,7 +245,7 @@ def working_tree(repo):
 
 
 def set_ref(repo, state, name, sha):
-    repo.g("update-ref", f"refs/rat/{state['id']}/{name}", sha)
+    repo.g("update-ref", f"refs/relay/{state['id']}/{name}", sha)
 
 
 def reset_worktree(repo, state, commit):
@@ -263,7 +263,7 @@ def exclude(repo, names):
     new = [f"/{n}" for n in names if f"/{n}" not in existing]
     if new:
         with path.open("a") as handle:
-            handle.write("\n".join(["# rat: dependency links in agent worktrees", *new]) + "\n")
+            handle.write("\n".join(["# relay: dependency links in agent worktrees", *new]) + "\n")
 
 
 def setup_worktree(repo, wt):
@@ -288,20 +288,20 @@ def setup_worktree(repo, wt):
 
 def cmd_init(repo, args):
     if not SLUG_RE.match(args.slug):
-        raise RatError("slug must be lowercase kebab-case, like auth or order-export")
+        raise RelayError("slug must be lowercase kebab-case, like auth or order-export")
     branch = repo.branch()
     if repo.g("status", "--porcelain").strip():
-        raise RatError("working tree has uncommitted changes; commit or stash them first")
+        raise RelayError("working tree has uncommitted changes; commit or stash them first")
     for path in repo.states.glob("*/state.json"):
         state = json.loads(path.read_text())
         if state["branch"] == branch and state["status"] == "active":
-            raise RatError(f"branch {branch} already has active plan {state['id']}")
+            raise RelayError(f"branch {branch} already has active plan {state['id']}")
     numbers = [int(p.name[:3]) for p in repo.plans.glob("[0-9][0-9][0-9]-*.md")] if repo.plans.exists() else []
     plan_id = f"{max(numbers, default=-1) + 1:03d}-{args.slug}"
     for folder in (repo.plans, repo.state_dir(plan_id), repo.worktrees):
         folder.mkdir(parents=True, exist_ok=True)
     wt = repo.worktree(plan_id)
-    repo.g("worktree", "add", "-q", "-b", f"rat/{plan_id}", str(wt), "HEAD")
+    repo.g("worktree", "add", "-q", "-b", f"relay/{plan_id}", str(wt), "HEAD")
     copied, linked = setup_worktree(repo, wt)
     repo.plan_file(plan_id).write_text(PLAN_TEMPLATE.format(id=plan_id, title=args.title, branch=branch))
     state = {
@@ -328,8 +328,8 @@ def cmd_snapshot(repo, args):
     state = load_state(repo, args.plan)
     entry = commit_entry(state, args.n)
     head = repo.head()
-    orig = repo.g("commit-tree", working_tree(repo), "-p", head, "-m", f"rat {state['id']}: commit {args.n} as handed over").strip()
-    base = strip_commit(repo, orig, head, f"rat {state['id']}: commit {args.n} without WHY comments")
+    orig = repo.g("commit-tree", working_tree(repo), "-p", head, "-m", f"relay {state['id']}: commit {args.n} as handed over").strip()
+    base = strip_commit(repo, orig, head, f"relay {state['id']}: commit {args.n} without WHY comments")
     set_ref(repo, state, f"orig-{args.n}", orig)
     set_ref(repo, state, f"base-{args.n}", base)
     entry.update(status="review", orig=orig, base=base, handoff_head=head)
@@ -356,7 +356,7 @@ def cmd_wt_commit(repo, args):
     wt = Path(state["worktree"])
     git("add", "-A", cwd=wt)
     if not git("diff", "--cached", "--name-only", cwd=wt).strip():
-        raise RatError("the worktree has no changes to commit")
+        raise RelayError("the worktree has no changes to commit")
     git("commit", "-q", "--no-verify", "-m", entry["title"], cwd=wt)
     built = git("rev-parse", "HEAD", cwd=wt).strip()
     set_ref(repo, state, f"built-{args.n}", built)
@@ -370,12 +370,12 @@ def cmd_finalize(repo, args):
     state = load_state(repo, args.plan)
     n = state["review"]
     if n is None:
-        raise RatError("no commit is in review")
+        raise RelayError("no commit is in review")
     entry = commit_entry(state, n)
     moved = bool(repo.g("log", "--format=%H", f"{entry['handoff_head']}..HEAD", *FEATURE_PATHS).strip())
     notes = strip_working_files(repo, state["base"])
     append_why_notes(repo, state, n, entry["title"], notes)
-    user = repo.g("commit-tree", working_tree(repo), "-p", repo.head(), "-m", "rat: user version").strip()
+    user = repo.g("commit-tree", working_tree(repo), "-p", repo.head(), "-m", "relay: user version").strip()
     changed = run(["git", "diff", "--quiet", entry["base"], user, *FEATURE_PATHS], cwd=repo.top, check=False).returncode != 0
     out_dir = repo.state_dir(state["id"])
     user_diff = None
@@ -407,10 +407,10 @@ def cmd_bring(repo, args):
     state = load_state(repo, args.plan)
     entry = commit_entry(state, args.n)
     if entry["status"] != "built":
-        raise RatError(f"commit {args.n} is {entry['status']}, not built")
+        raise RelayError(f"commit {args.n} is {entry['status']}, not built")
     patch = repo.state_dir(state["id"]) / f"next-{args.n}.diff"
     if not patch.exists():
-        raise RatError(f"no patch for commit {args.n}; run finalize first")
+        raise RelayError(f"no patch for commit {args.n}; run finalize first")
     if run(["git", "apply", "--whitespace=nowarn", str(patch)], cwd=repo.top, check=False).returncode == 0:
         return {"n": args.n, "applied": "clean", "conflicts": []}
     run(["git", "apply", "--3way", "--whitespace=nowarn", str(patch)], cwd=repo.top, check=False)
@@ -422,7 +422,7 @@ def cmd_bring(repo, args):
 def cmd_status(repo, args):
     try:
         state = load_state(repo, args.plan)
-    except RatError as err:
+    except RelayError as err:
         return {"plan": None, "message": str(err)}
     folder = repo.state_dir(state["id"])
     questions = sorted(str(p) for p in folder.glob("questions-*.md"))
@@ -453,7 +453,7 @@ def cmd_lock(repo, args):
     folder = repo.state_dir(state["id"])
     held = lock_info(folder)
     if held and not args.force:
-        raise RatError(f"plan {state['id']} is in use by another session ({held['age_seconds']}s ago)")
+        raise RelayError(f"plan {state['id']} is in use by another session ({held['age_seconds']}s ago)")
     (folder / "lock").write_text(f"pid {os.getppid()} at {time.ctime()}\n")
     return {"locked": state["id"]}
 
@@ -494,8 +494,8 @@ def cmd_finish(repo, args):
     if wt.exists():
         repo.g("worktree", "remove", "--force", str(wt))
     repo.g("worktree", "prune")
-    repo.g("branch", "-D", f"rat/{state['id']}", check=False)
-    refs = repo.g("for-each-ref", "--format=%(refname)", f"refs/rat/{state['id']}/").split()
+    repo.g("branch", "-D", f"relay/{state['id']}", check=False)
+    refs = repo.g("for-each-ref", "--format=%(refname)", f"refs/relay/{state['id']}/").split()
     for ref in refs:
         repo.g("update-ref", "-d", ref)
     folder = repo.state_dir(state["id"])
@@ -522,7 +522,7 @@ def cmd_strip(repo, args):
 
 
 def main(argv=None):
-    parser = argparse.ArgumentParser(prog="rat.py")
+    parser = argparse.ArgumentParser(prog="relay.py")
     parser.add_argument("--plan", help="plan id; defaults to the active plan for the current branch")
     sub = parser.add_subparsers(dest="cmd", required=True)
     p = sub.add_parser("init"); p.add_argument("slug"); p.add_argument("title")
@@ -537,7 +537,7 @@ def main(argv=None):
     handler = globals()["cmd_" + args.cmd.replace("-", "_")]
     try:
         result = handler(Repo(), args)
-    except RatError as err:
+    except RelayError as err:
         print(json.dumps({"error": str(err)}))
         return 1
     print(json.dumps(result, indent=2))

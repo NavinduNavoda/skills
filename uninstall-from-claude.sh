@@ -30,8 +30,6 @@ unlink_ours() {
   restore_backup "$dest"
 }
 
-unlink_ours "$claude/CLAUDE.md"
-
 for l in "$claude"/skills/* "$claude"/agents/*; do
   unlink_ours "$l"
 done
