@@ -5,8 +5,9 @@
       "release-type": "simple",
       "package-name": "skills",
       "include-component-in-tag": false,
-      "bump-minor-pre-major": true,
-      "extra-files": ["README.md"]
+      "extra-files": [
+        "README.md"
+      ]
     }
   }
 }

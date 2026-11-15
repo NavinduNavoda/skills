@@ -8,13 +8,13 @@ Install everything from the latest release:
 
 <!-- x-release-please-start-version -->
 ```bash
-npx skills add NavinduNavoda/skills@v0.1.0 -s '*'
+npx skills add NavinduNavoda/skills@v1.0.0 -s '*'
 ```
 
 Install only the relay flow and the shared skills it reads:
 
 ```bash
-npx skills add NavinduNavoda/skills@v0.1.0 -s start-relay next-relay why-relay status-relay nv-coding-style nv-testing to-adr nv-git-workflow nv-writing-style
+npx skills add NavinduNavoda/skills@v1.0.0 -s start-relay next-relay why-relay status-relay nv-coding-style nv-testing to-adr nv-git-workflow nv-writing-style
 ```
 <!-- x-release-please-end -->
 
