@@ -45,6 +45,7 @@ A repo's own `CODING_STANDARDS.md`, `AGENTS.md`, `CLAUDE.md` or `CONTRIBUTING.md
 Run these directly. No flow reads them.
 
 - [`bro-please`](./skills/bro-please/SKILL.md): explain a snippet, file or concept in the current codebase in plain language.
+- [`research-about`](./skills/research-about/SKILL.md): research a topic on the web and write it up as linked HTML pages in `docs/research/`.
 
 ## Working on the skills
 
