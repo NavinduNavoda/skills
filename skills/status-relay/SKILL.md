@@ -14,6 +14,7 @@ This skill uses the shared relay files in `../start-relay/`, next to this skill'
 | `questions` not empty | `/next-relay`. It settles the builder's questions first. |
 | `hint: resume` | `/next-relay`. It rebuilds the next commit after a restart. |
 | `hint: finish` | `/next-relay`. It cleans up the worktree. |
+| any active plan, user wants the rest done now | `/finish-relay`. Commits the review, brings the built one, builds and commits the rest without review stops. |
 | `locked` set | Another session is running this plan. Finish there, or wait 30 minutes for the lock to expire. |
 
 Also mention these when they fit what the user said:
