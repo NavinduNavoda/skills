@@ -46,6 +46,7 @@ Run these directly. No flow reads them.
 
 - [`bro-please`](./skills/bro-please/SKILL.md): explain a snippet, file or concept in the current codebase in plain language.
 - [`research-about`](./skills/research-about/SKILL.md): research a topic on the web and write it up as linked HTML pages in `docs/research/`.
+- [`pr-to-main-simple`](./skills/pr-to-main-simple/SKILL.md): commit everything, rebase on `main`, push and open a title-only pull request into `main`.
 
 ## Working on the skills
 
