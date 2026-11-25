@@ -1,6 +1,6 @@
 # The relay script
 
-The relay skills build a feature as small commits. The user reviews commit N in their folder while a background agent builds N+1 in a separate worktree. `start-relay` holds the files every relay skill shares. `next-relay`, `why-relay` and `status-relay` reach them at `../start-relay/`.
+The relay skills build a feature as small commits. The user reviews commit N in their folder while a background agent builds N+1 in a separate worktree. `start-relay` holds the files every relay skill shares. `next-relay`, `finish-relay`, `why-relay` and `status-relay` reach them at `../start-relay/`.
 
 ## Files
 

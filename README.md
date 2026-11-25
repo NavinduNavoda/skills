@@ -10,7 +10,7 @@ Install every skill from the latest release:
 npx skills add NavinduNavoda/skills#latest -s '*'
 ```
 
-Add `-g` to install for every project instead of the current one. If you pick skills one by one, install the relay skills together and in the same scope, because `next-relay`, `why-relay` and `status-relay` use files from `start-relay`. To upgrade, run the install command again. Leave out `#latest` to install the newest commit on `main` instead.
+Add `-g` to install for every project instead of the current one. If you pick skills one by one, install the relay skills together and in the same scope, because `next-relay`, `finish-relay`, `why-relay` and `status-relay` use files from `start-relay`, and `finish-relay` also uses `next-relay`. To upgrade, run the install command again. Leave out `#latest` to install the newest commit on `main` instead.
 
 Every skill runs only when you type it or a flow reads it. None of them loads on its own, so they don't override your own skills or rules.
 
@@ -22,6 +22,7 @@ You review commit N while a background agent builds commit N+1 in a separate wor
 
 - [`start-relay`](./skills/start-relay/SKILL.md): plan a feature as small commits, build commit 1 and start commit 2 in the background. It also holds the files the other relay skills use.
 - [`next-relay`](./skills/next-relay/SKILL.md): commit the one under review and bring in the next, adapted to your edits.
+- [`finish-relay`](./skills/finish-relay/SKILL.md): commit the one under review, bring in the built one, then build and commit every remaining commit without review stops.
 - [`why-relay`](./skills/why-relay/SKILL.md): explain a decision in the current plan in depth, for a junior developer.
 - [`status-relay`](./skills/status-relay/SKILL.md): say which relay step to run next, based on the plan's state.
 
