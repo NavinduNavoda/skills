@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.2.0](https://github.com/NavinduNavoda/skills/compare/v1.1.0...v1.2.0) (2026-11-25)
+
+
+### Features
+
+* add finish-relay to finish a relay plan in one shot ([5503be8](https://github.com/NavinduNavoda/skills/commit/5503be8d92e9e07faf83a7df1a58eefbe00fa6cf))
+* add finish-relay to finish a relay plan in one shot ([04f7052](https://github.com/NavinduNavoda/skills/commit/04f7052c01fe8c5736d138e5ad60af3f35bb9f6b))
+
 ## [1.1.0](https://github.com/NavinduNavoda/skills/compare/v1.0.0...v1.1.0) (2026-11-25)
 
 
