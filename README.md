@@ -40,6 +40,12 @@ Flows read these when they are installed. You can also run them directly.
 
 A repo's own `CODING_STANDARDS.md`, `AGENTS.md`, `CLAUDE.md` or `CONTRIBUTING.md` wins over the shared skills.
 
+### Standalone
+
+Run these directly. No flow reads them.
+
+- [`bro-please`](./skills/bro-please/SKILL.md): explain a snippet, file or concept in the current codebase in plain language.
+
 ## Working on the skills
 
 `./install-to-claude.sh` symlinks each folder in `skills/` into `~/.claude/skills/`, so edits in your clone apply at once. `./uninstall-from-claude.sh` removes the links. See [`AGENTS.md`](./AGENTS.md) for the repo's rules.
