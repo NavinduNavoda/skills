@@ -6,7 +6,7 @@ disable-model-invocation: true
 
 # Coding style
 
-How code reads line by line, in any language. Read `STANDARDS.md` in this folder before designing modules, APIs, data access, configuration or logging. Tests follow `../nv-testing/SKILL.md` if it is installed. A repo's own `CODING_STANDARDS.md` overrides all three.
+How code reads line by line, in any language. Read `STANDARDS.md` in this folder before designing modules, APIs, data access, configuration or logging. Tests follow `../nv-testing/SKILL.md` if it is installed. For Go code, also read `../nv-go-standards/SKILL.md`. A repo's own `CODING_STANDARDS.md` overrides all of them.
 
 The measure behind every rule is **reader load**: how many layers a reader must trace and how much state they must hold to answer "where does this value come from?" and "what can change it?".
 

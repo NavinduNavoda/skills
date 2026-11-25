@@ -1,0 +1,33 @@
+:root{--bg:#fffff8;--fg:#111;--muted:#666;--accent:#8a3b12;--rule:#ddd;--ok:#2e7d32;--bad:#b71c1c;--card:#f6f4ea}
+@media (prefers-color-scheme:dark){:root{--bg:#151513;--fg:#e8e6df;--muted:#9a978d;--accent:#e0a16b;--rule:#333;--ok:#81c784;--bad:#ef9a9a;--card:#1f1e1a}}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--fg);font:18px/1.6 "Iowan Old Style","Palatino Linotype",Palatino,Georgia,serif;margin:0;padding:3rem 16px}
+main{max-width:42rem;margin:0 auto}
+h1{font-weight:400;font-size:2.1rem;line-height:1.2;margin:.2rem 0 1rem}
+h2{font-weight:400;font-style:italic;font-size:1.4rem;margin:2.2rem 0 .6rem}
+.kicker{font-variant:small-caps;letter-spacing:.08em;color:var(--muted)}
+a{color:var(--accent)}
+code{font:.85em ui-monospace,Menlo,Consolas,monospace;background:var(--card);padding:.05em .3em;border-radius:3px}
+pre{font:.78rem/1.45 ui-monospace,Menlo,Consolas,monospace;background:var(--card);padding:1rem;overflow-x:auto;border-left:3px solid var(--accent)}
+.note{color:var(--muted);font-size:.9rem}
+.box{border:1px solid var(--rule);padding:1rem 1.2rem;margin:1.4rem 0;background:var(--card)}
+table{border-collapse:collapse;width:100%;font-size:.92rem}
+td,th{border-bottom:1px solid var(--rule);padding:.4rem .5rem;text-align:left;vertical-align:top}
+nav.foot{margin-top:3rem;padding-top:1rem;border-top:1px solid var(--rule);font-size:.9rem}
+.quiz .q{margin:1.4rem 0}
+.quiz button{display:block;width:100%;text-align:left;font:inherit;font-size:.95rem;margin:.3rem 0;padding:.5rem .8rem;background:var(--bg);color:var(--fg);border:1px solid var(--rule);cursor:pointer}
+.quiz button.ok{border-color:var(--ok);color:var(--ok)}
+.quiz button.bad{border-color:var(--bad);color:var(--bad)}
+.quiz .fb{font-size:.9rem;min-height:1.4em;color:var(--muted)}
+@media print{body{padding:0;background:#fff;color:#000}.quiz button{border:1px solid #999}}
+/* research-about additions */
+ol.toc,ul.toc{padding-left:1.2rem}
+ol.toc li,ul.toc li{margin:.25rem 0}
+.src{font-size:.85rem;color:var(--muted);vertical-align:super;text-decoration:none}
+.callout{border-left:3px solid var(--accent);padding:.6rem 1rem;margin:1.4rem 0;background:var(--card)}
+.callout.warn{border-left-color:var(--bad)}
+.tag{font-size:.75rem;font-variant:small-caps;letter-spacing:.06em;color:var(--muted);border:1px solid var(--rule);padding:0 .4em;border-radius:3px}
+dl dt{font-weight:600;margin-top:.9rem}
+dl dd{margin:.15rem 0 0 0}
+ol.sources li{margin:.7rem 0}
+ol.sources .meta{display:block;font-size:.85rem;color:var(--muted)}
