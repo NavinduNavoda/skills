@@ -33,6 +33,7 @@ Flows read these when they are installed. You can also run them directly.
 
 - [`nv-coding-style`](./skills/nv-coding-style/SKILL.md): line-level code style, plus architecture, API, data, config and logging standards.
 - [`nv-testing`](./skills/nv-testing/SKILL.md): which code gets tests and how to write them.
+- [`nv-go-standards`](./skills/nv-go-standards/SKILL.md): Go project layout, deep modules with `doc.go` and `contract.go`, and Go testing. `nv-coding-style` reads it for Go code.
 - [`to-adr`](./skills/to-adr/SKILL.md): turn a decision from chat into a numbered ADR in `docs/adr/`.
 - [`nv-git-workflow`](./skills/nv-git-workflow/SKILL.md): branch names, Conventional Commits and pull request rules.
 - [`nv-writing-style`](./skills/nv-writing-style/SKILL.md): plain, specific prose for commits, pull requests, plans and docs.
