@@ -38,6 +38,7 @@ Flows read these when they are installed. You can also run them directly.
 - [`to-adr`](./skills/to-adr/SKILL.md): turn a decision from chat into a numbered ADR in `docs/adr/`.
 - [`nv-git-workflow`](./skills/nv-git-workflow/SKILL.md): branch names, Conventional Commits and pull request rules.
 - [`nv-writing-style`](./skills/nv-writing-style/SKILL.md): plain, specific prose for commits, pull requests, plans and docs.
+- [`nv-docs-style`](./skills/nv-docs-style/SKILL.md): layout, page format and Docsify setup for `docs/`, with `lessons/`, `adr/` and `research/` sections. `research-about` and `teach` read it.
 
 A repo's own `CODING_STANDARDS.md`, `AGENTS.md`, `CLAUDE.md` or `CONTRIBUTING.md` wins over the shared skills.
 

@@ -1,0 +1,420 @@
+:root {
+  --bg: #151513;
+  --fg: #e8e6df;
+  --muted: #9a978d;
+  --accent: #e0a16b;
+  --rule: #333;
+  --ok: #81c784;
+  --bad: #ef9a9a;
+  --card: #1f1e1a;
+  --serif: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
+  --mono: ui-monospace, Menlo, Consolas, monospace;
+  --theme-color: var(--accent);
+}
+
+body,
+.sidebar {
+  background-color: var(--bg);
+  color: var(--fg);
+}
+
+body {
+  font: 18px/1.6 var(--serif);
+}
+
+.progress {
+  background-color: var(--accent);
+}
+
+.sidebar {
+  border-right: 1px solid var(--rule);
+  font-family: var(--serif);
+}
+
+.sidebar .app-name-link {
+  color: var(--fg);
+  font-weight: 400;
+  font-size: 1.3rem;
+}
+
+.sidebar ul li a {
+  color: var(--muted);
+  font-size: 15px;
+}
+
+.sidebar ul li a:hover {
+  color: var(--fg);
+}
+
+.sidebar ul li.active > a {
+  color: var(--accent);
+  font-weight: 400;
+  border-right: 2px solid var(--accent);
+}
+
+.sidebar > ul > li > p {
+  color: var(--muted);
+  font-variant: small-caps;
+  letter-spacing: 0.08em;
+}
+
+.markdown-section {
+  max-width: 46rem;
+  padding-top: 3rem;
+}
+
+.markdown-section p,
+.markdown-section li {
+  line-height: 1.6;
+}
+
+.markdown-section h1,
+.markdown-section h2,
+.markdown-section h3,
+.markdown-section h4 {
+  color: var(--fg);
+  font-weight: 400;
+}
+
+.markdown-section h1 {
+  font-size: 2.1rem;
+  line-height: 1.2;
+  margin: 0.2rem 0 1rem;
+}
+
+.markdown-section h2 {
+  font-style: italic;
+  font-size: 1.4rem;
+  margin: 2.2rem 0 0.6rem;
+}
+
+.markdown-section h3 {
+  font-size: 1.15rem;
+  margin: 1.6rem 0 0.4rem;
+}
+
+.markdown-section strong {
+  color: var(--fg);
+  font-weight: 600;
+}
+
+.markdown-section em {
+  color: var(--fg);
+}
+
+.markdown-section a {
+  color: var(--accent);
+  font-weight: 400;
+}
+
+.markdown-section hr {
+  border-bottom: 1px solid var(--rule);
+}
+
+.anchor span {
+  color: var(--fg);
+}
+
+.markdown-section code {
+  background-color: var(--card);
+  color: var(--fg);
+  font-family: var(--mono);
+  border-radius: 3px;
+  margin: 0;
+  padding: 0.05em 0.3em;
+}
+
+.markdown-section > :not(h1):not(h2):not(h3):not(h4):not(h5):not(h6) code {
+  font-size: 0.85em;
+}
+
+.markdown-section pre {
+  background-color: var(--card);
+  border-left: 3px solid var(--accent);
+  font-family: var(--mono);
+  line-height: 1.45;
+  padding: 0 1rem;
+}
+
+.markdown-section pre > code,
+.markdown-section > :not(h1):not(h2):not(h3):not(h4):not(h5):not(h6) pre > code {
+  background-color: transparent;
+  color: var(--fg);
+  font-family: var(--mono);
+  font-size: 0.85rem;
+  border-radius: 0;
+  margin: 0;
+  padding: 1.6em 0 1em;
+}
+
+.markdown-section pre:after {
+  color: var(--muted);
+  font-family: var(--mono);
+  font-weight: 400;
+}
+
+.markdown-section .token.comment,
+.markdown-section .token.prolog,
+.markdown-section .token.doctype,
+.markdown-section .token.cdata {
+  color: var(--muted);
+  font-style: italic;
+}
+
+.markdown-section .token.punctuation {
+  color: #8a867b;
+}
+
+.markdown-section .token.keyword,
+.markdown-section .token.atrule,
+.markdown-section .token.statement,
+.markdown-section .token.important {
+  color: var(--accent);
+}
+
+.markdown-section .token.string,
+.markdown-section .token.char,
+.markdown-section .token.attr-value,
+.markdown-section .token.regex,
+.markdown-section .token.url,
+.markdown-section .language-css .token.string {
+  color: #c5b583;
+}
+
+.markdown-section .token.number,
+.markdown-section .token.boolean,
+.markdown-section .token.constant,
+.markdown-section .token.unit {
+  color: #d98c6a;
+}
+
+.markdown-section .token.property,
+.markdown-section .token.attr-name,
+.markdown-section .token.key {
+  color: #d9b88f;
+}
+
+.markdown-section .token.tag,
+.markdown-section .token.selector,
+.markdown-section .token.class-name,
+.markdown-section .token.function {
+  color: #e8d3a9;
+}
+
+.markdown-section .token.variable,
+.markdown-section .token.placeholder,
+.markdown-section .token.entity,
+.markdown-section .token.control,
+.markdown-section .token.directive,
+.markdown-section .token.operator {
+  color: #b8a99a;
+}
+
+.markdown-section .token.inserted {
+  color: var(--ok);
+  border-bottom: 0;
+}
+
+.markdown-section .token.deleted {
+  color: var(--bad);
+}
+
+.markdown-section table {
+  display: table;
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.92rem;
+}
+
+.markdown-section tr,
+.markdown-section tr:nth-child(2n) {
+  background-color: transparent;
+  border-top: 0;
+}
+
+.markdown-section td,
+.markdown-section th {
+  border: 0;
+  border-bottom: 1px solid var(--rule);
+  padding: 0.4rem 0.5rem;
+  text-align: left;
+  vertical-align: top;
+}
+
+.markdown-section th {
+  color: var(--fg);
+  font-weight: 600;
+}
+
+.markdown-section blockquote {
+  background-color: var(--card);
+  border-left: 3px solid var(--accent);
+  color: var(--fg);
+  margin: 1.4rem 0;
+  padding: 0.6rem 1rem;
+}
+
+.markdown-section blockquote p {
+  font-weight: 400;
+  margin: 0.4rem 0;
+}
+
+.markdown-section .mermaid {
+  text-align: center;
+  margin: 1.5em 0;
+}
+
+.sidebar .search {
+  border-bottom: 1px solid var(--rule);
+}
+
+.sidebar .search input {
+  background-color: var(--card);
+  border: 1px solid var(--rule);
+  border-radius: 3px;
+  color: var(--fg);
+  font-family: var(--serif);
+}
+
+.sidebar .search input:focus {
+  border-color: var(--accent);
+  box-shadow: none;
+}
+
+.sidebar .search input::placeholder {
+  color: var(--muted);
+}
+
+.sidebar .search .clear-button svg circle {
+  fill: var(--rule);
+}
+
+.sidebar .search .clear-button svg path {
+  stroke: var(--fg);
+}
+
+.sidebar .search .matching-post {
+  border-bottom: 1px solid var(--rule);
+}
+
+.sidebar .search .matching-post:last-child {
+  border-bottom: 0;
+}
+
+.sidebar .search h2 {
+  color: var(--fg);
+  font-weight: 400;
+}
+
+.sidebar .search p {
+  color: var(--muted);
+}
+
+.sidebar .search .search-keyword {
+  color: var(--accent);
+  font-weight: 600;
+}
+
+.markdown-section .docsify-pagination-container {
+  border-top: 1px solid var(--rule);
+}
+
+.markdown-section .pagination-item:not(:last-child) a .pagination-item-label,
+.markdown-section .pagination-item:not(:last-child) a .pagination-item-title,
+.markdown-section .pagination-item:last-child .pagination-item-label {
+  opacity: 1;
+}
+
+.markdown-section .pagination-item-label {
+  color: var(--muted);
+  font-variant: small-caps;
+  letter-spacing: 0.06em;
+}
+
+.markdown-section .pagination-item-title {
+  color: var(--accent);
+  font-size: 1.3em;
+}
+
+.markdown-section .docsify-copy-code-button {
+  background: var(--card);
+  border: 1px solid var(--rule);
+  border-radius: 3px;
+  color: var(--muted);
+  font-family: var(--mono);
+  font-size: 0.75rem;
+}
+
+.markdown-section .docsify-copy-code-button:hover,
+.markdown-section .docsify-copy-code-button:focus {
+  color: var(--accent);
+  border-color: var(--accent);
+}
+
+.sidebar-toggle {
+  background-color: color-mix(in srgb, var(--bg) 85%, transparent);
+}
+
+@media screen and (max-width: 768px) {
+  .sidebar-toggle {
+    background-color: transparent;
+  }
+
+  body.close .sidebar-toggle {
+    background-color: color-mix(in srgb, var(--bg) 85%, transparent);
+  }
+}
+
+kbd {
+  background-color: var(--card);
+  border: 1px solid var(--rule);
+  border-bottom-width: 2px;
+  color: var(--fg);
+  font-family: var(--mono);
+}
+
+html {
+  scrollbar-color: var(--rule) var(--bg);
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track,
+.sidebar:hover::-webkit-scrollbar-track {
+  background: var(--bg);
+}
+
+::-webkit-scrollbar-thumb,
+.sidebar:hover::-webkit-scrollbar-thumb {
+  background: var(--rule);
+  border-radius: 4px;
+}
+
+.app-nav {
+  font-family: var(--serif);
+  font-variant: small-caps;
+  letter-spacing: 0.08em;
+}
+
+.app-nav a {
+  color: var(--muted);
+  font-size: 1rem;
+}
+
+.app-nav a:hover,
+.app-nav a.active {
+  color: var(--accent);
+  border-bottom-color: var(--accent);
+}
+
+.app-nav li ul {
+  background-color: var(--card);
+  border-color: var(--rule);
+}
+
+.sidebar .app-sub-sidebar li:before {
+  color: var(--muted);
+}

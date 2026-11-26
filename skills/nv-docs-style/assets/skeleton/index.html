@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>{{SITE_NAME}}</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+  <meta name="description" content="{{SITE_DESCRIPTION}}">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsify@4.13.1/lib/themes/dark.css">
+  <link rel="stylesheet" href="assets/theme.css">
+</head>
+<body>
+  <div id="app">Loading…</div>
+  <script>
+    window.$docsify = {
+      name: '{{SITE_NAME}}',
+      repo: '',
+      loadNavbar: true,
+      mergeNavbar: true,
+      loadSidebar: true,
+      relativePath: false,
+      subMaxLevel: 2,
+      auto2top: true,
+      search: {
+        placeholder: 'Search docs…',
+        noData: 'No results',
+        depth: 3
+      },
+      pagination: {
+        previousText: 'Previous',
+        nextText: 'Next',
+        crossChapter: true
+      }
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/docsify@4.13.1/lib/docsify.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/docsify@4.13.1/lib/plugins/search.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/docsify@4.13.1/lib/plugins/zoom-image.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/docsify-copy-code@3.0.0/dist/docsify-copy-code.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/docsify-pagination@2.10.1/dist/docsify-pagination.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-bash.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-json.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-yaml.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-typescript.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-python.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-go.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-java.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mermaid@10.9.1/dist/mermaid.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/docsify-mermaid@2.0.1/dist/docsify-mermaid.js"></script>
+  <script>
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: 'base',
+      themeVariables: {
+        darkMode: true,
+        background: '#151513',
+        fontFamily: '"Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif',
+        textColor: '#e8e6df',
+        titleColor: '#e8e6df',
+        lineColor: '#9a978d',
+        primaryColor: '#1f1e1a',
+        primaryTextColor: '#e8e6df',
+        primaryBorderColor: '#e0a16b',
+        secondaryColor: '#24231e',
+        secondaryTextColor: '#e8e6df',
+        secondaryBorderColor: '#9a978d',
+        tertiaryColor: '#1a1916',
+        tertiaryTextColor: '#e8e6df',
+        tertiaryBorderColor: '#333333',
+        mainBkg: '#1f1e1a',
+        nodeBorder: '#e0a16b',
+        clusterBkg: '#1a1916',
+        clusterBorder: '#333333',
+        edgeLabelBackground: '#151513',
+        noteBkgColor: '#24231e',
+        noteTextColor: '#e8e6df',
+        noteBorderColor: '#9a978d',
+        actorBkg: '#1f1e1a',
+        actorBorder: '#e0a16b',
+        actorTextColor: '#e8e6df',
+        actorLineColor: '#9a978d',
+        signalColor: '#e8e6df',
+        signalTextColor: '#e8e6df',
+        labelBoxBkgColor: '#1f1e1a',
+        labelBoxBorderColor: '#e0a16b',
+        labelTextColor: '#e8e6df',
+        loopTextColor: '#e8e6df',
+        activationBkgColor: '#24231e',
+        activationBorderColor: '#e0a16b',
+        sequenceNumberColor: '#151513',
+        sectionBkgColor: '#1f1e1a',
+        altSectionBkgColor: '#151513',
+        sectionBkgColor2: '#24231e',
+        taskBkgColor: '#5a4330',
+        taskBorderColor: '#e0a16b',
+        taskTextColor: '#e8e6df',
+        taskTextLightColor: '#e8e6df',
+        taskTextDarkColor: '#e8e6df',
+        taskTextOutsideColor: '#e8e6df',
+        taskTextClickableColor: '#e0a16b',
+        activeTaskBkgColor: '#7a5a3c',
+        activeTaskBorderColor: '#e0a16b',
+        doneTaskBkgColor: '#333333',
+        doneTaskBorderColor: '#9a978d',
+        critBkgColor: '#7a3b36',
+        critBorderColor: '#ef9a9a',
+        gridColor: '#333333',
+        todayLineColor: '#ef9a9a',
+        labelColor: '#e8e6df',
+        altBackground: '#1a1916',
+        compositeBackground: '#1a1916',
+        compositeTitleBackground: '#24231e',
+        compositeBorder: '#9a978d',
+        stateBkg: '#1f1e1a',
+        stateBorder: '#e0a16b',
+        innerEndBackground: '#e0a16b',
+        specialStateColor: '#e0a16b'
+      }
+    });
+  </script>
+</body>
+</html>
