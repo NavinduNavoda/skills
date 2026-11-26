@@ -38,6 +38,7 @@ Flows read these when they are installed. You can also run them directly.
 - [`to-adr`](./skills/to-adr/SKILL.md): turn a decision from chat into a numbered ADR in `docs/adr/`.
 - [`nv-git-workflow`](./skills/nv-git-workflow/SKILL.md): branch names, Conventional Commits and pull request rules.
 - [`nv-writing-style`](./skills/nv-writing-style/SKILL.md): plain, specific prose for commits, pull requests, plans and docs.
+- [`nv-docs-style`](./skills/nv-docs-style/SKILL.md): layout, page format and Docsify setup for `docs/`, with `lessons/`, `adr/` and `research/` sections. `research-about` and `teach` read it.
 
 A repo's own `CODING_STANDARDS.md`, `AGENTS.md`, `CLAUDE.md` or `CONTRIBUTING.md` wins over the shared skills.
 
@@ -46,7 +47,8 @@ A repo's own `CODING_STANDARDS.md`, `AGENTS.md`, `CLAUDE.md` or `CONTRIBUTING.md
 Run these directly. No flow reads them.
 
 - [`bro-please`](./skills/bro-please/SKILL.md): explain a snippet, file or concept in the current codebase in plain language.
-- [`research-about`](./skills/research-about/SKILL.md): research a topic on the web and write it up as linked HTML pages in `docs/research/`.
+- [`research-about`](./skills/research-about/SKILL.md): research a topic on the web and write it up as linked Markdown pages in `docs/research/`, viewed with Docsify.
+- [`teach`](./skills/teach/SKILL.md): build a complete course of Markdown lessons on a topic in `docs/lessons/`.
 - [`pr-to-main-simple`](./skills/pr-to-main-simple/SKILL.md): commit everything, rebase on `main`, push and open a title-only pull request into `main`.
 
 ## Working on the skills
