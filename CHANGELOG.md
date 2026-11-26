@@ -1,5 +1,17 @@
 # Changelog
 
+## [1.2.0](https://github.com/NavinduNavoda/skills/compare/v1.1.0...v1.2.0) (2026-11-26)
+
+
+### Features
+
+* add finish-relay to finish a relay plan in one shot ([5503be8](https://github.com/NavinduNavoda/skills/commit/5503be8d92e9e07faf83a7df1a58eefbe00fa6cf))
+* add finish-relay to finish a relay plan in one shot ([04f7052](https://github.com/NavinduNavoda/skills/commit/04f7052c01fe8c5736d138e5ad60af3f35bb9f6b))
+* add nv-docs-style and teach, move research-about to Docsify ([6b0435e](https://github.com/NavinduNavoda/skills/commit/6b0435e22d4df73d22c5cea23c36b290f89c9d34))
+* add nv-docs-style for a Docsify docs/ layout ([ac62e4c](https://github.com/NavinduNavoda/skills/commit/ac62e4c109b8cc15a4ae47d34e09146df39b6100))
+* add teach to build a Markdown course on a topic ([b86fda2](https://github.com/NavinduNavoda/skills/commit/b86fda2be909c3baa1d8e03eac2acaf936e19861))
+* write research-about notes as Docsify Markdown ([f582a58](https://github.com/NavinduNavoda/skills/commit/f582a58337ae00ecfedc985f9791bfdce3cef4f8))
+
 ## [1.1.0](https://github.com/NavinduNavoda/skills/compare/v1.0.0...v1.1.0) (2026-11-25)
 
 
