@@ -1,5 +1,5 @@
 interface:
   display_name: "Research About"
-  short_description: "Research a topic on the web and write HTML notes"
+  short_description: "Research a topic on the web and write Markdown notes"
 policy:
   allow_implicit_invocation: false

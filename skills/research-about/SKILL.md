@@ -1,29 +1,27 @@
 ---
 name: research-about
-description: Research a topic on the internet (official docs, guides, blogs), learn it, and write it up as styled HTML pages in ./docs/research/.
+description: Research a topic on the internet (official docs, guides, blogs), learn it, and write it up as Markdown pages in docs/research/, viewed with Docsify.
 disable-model-invocation: true
 argument-hint: "What topic should I research?"
 ---
 
-The user wants a topic researched from the web and written up as HTML notes they can read later. Paths like `./docs/research/` resolve from the directory the skill was run in. `assets/style.css` resolves from this skill's folder.
+The user wants a topic researched from the web and written up as notes they can read later. Paths like `docs/` resolve from the directory the skill was run in. `../nv-docs-style/` resolves from this skill's folder.
 
-## Output layout
+## Before writing
+
+Read `../nv-docs-style/SKILL.md` and follow it for the layout, page format, sidebars and citations. Run its "Check docs/" steps first. If the user declines a restructure, write where that skill says to.
+
+Output goes to `docs/research/<topic-slug>/`:
 
 ```
-docs/research/
-  assets/style.css            shared stylesheet, copied from this skill's assets/
-  index.html                  list of every researched topic, newest first
-  <topic-slug>/
-    index.html                overview: what it is, why it matters, map of the pages
-    0001-<dash-case-name>.html  one page per subtopic, numbered in reading order
-    glossary.html             terms used across the pages
-    sources.html              every source read, annotated
-    SOURCES.md                same list in Markdown, used to resume or refresh
+README.md          overview: what it is, why it matters, scope, research date, ordered list of pages
+_sidebar.md        the topic's pages in reading order
+0001-<name>.md     one page per subtopic, numbered in reading order
+glossary.md        terms used across the pages
+sources.md         every source read, numbered and annotated
 ```
 
-If `docs/research/assets/style.css` is missing, copy it from this skill's `assets/style.css`. Never edit the copy to suit one page; add a class to the skill's stylesheet and recopy instead.
-
-If `docs/research/<topic-slug>/` already exists, read `SOURCES.md` and the existing pages first. Extend or correct them rather than starting over, and keep the numbering.
+If `docs/research/<topic-slug>/` already exists, read `sources.md` and the existing pages first. Extend or correct them rather than starting over, and keep the numbering.
 
 ## Workflow
 
@@ -53,49 +51,21 @@ Before writing, sort what you read into 3 to 8 subtopics in a sensible reading o
 
 ### 5. Write the pages
 
-Follow the writing rules in `../nv-writing-style/SKILL.md` if it exists.
+Every page follows the page format in `nv-docs-style`, with the kicker `*Research · {Topic} · {n} of {total}*`, and:
 
-Every page:
-
-- Is one self-contained HTML file linking `../assets/style.css` (topic pages) or `assets/style.css` (the top `index.html`). No other CSS or JS, no external fonts or CDNs.
-- Uses the page skeleton below: a `kicker`, an `h1`, short sections under `h2`, and a `nav.foot` with links to the previous page, next page, the topic overview, glossary, and sources.
 - Is short enough to read in about five minutes. Split a page that grows past that.
-- Cites every claim with a link to its source, using `<a class="src" href="URL">[n]</a>` where `n` is the source's number in `sources.html`.
-- Uses `pre` for code and commands, `table` for comparisons, `.callout` for key points, `.callout.warn` for pitfalls, and `.box` for a worked example.
-- Ends with "Primary source" naming the single best resource for that page, and a note that the user can ask follow-up questions.
+- Cites every claim with its source number linked to the source URL.
+- Uses fenced code for code and commands, tables for comparisons, Mermaid for flows and architecture, `> **Key point:**` and `> **Watch out:**` blockquotes, and a `## Example` section for a worked example.
+- Ends with `## Primary source`, naming the single best resource for that page, and a line saying the user can ask follow-up questions in the session.
 
-The overview `index.html` gives a plain summary of the topic in a few paragraphs, the scope you chose, the date of the research, and an ordered table of contents (`ol.toc`) of the pages.
+The overview `README.md` gives a plain summary of the topic in a few paragraphs, the scope you chose, the date of the research, and a numbered list of the pages.
 
-`glossary.html` is a `dl` of terms, each with a one or two sentence definition and a link to the page that explains it. Use these terms the same way in every page.
+### 6. Update navigation
 
-`sources.html` is an `ol.sources` list. Each item has the title as a link, then a `.meta` line with the author or publisher, the date or version, the type (docs, guide, blog, spec, video), and one line on what it covers and when to use it. Number the list so the `[n]` citations match. Add a "Gaps" section for areas where no good source exists.
+- Write the topic `_sidebar.md`.
+- Add the topic at the top of `docs/research/_sidebar.md` and as the first row of the table in `docs/research/README.md`: name linked to its overview, one-line summary, research date.
 
-`SOURCES.md` repeats the same list in Markdown with the same numbers.
+### 7. Check and report
 
-Update the top `docs/research/index.html` with one row per topic: name linked to its overview, one-line summary, and research date.
-
-### Page skeleton
-
-```html
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Short Page Name</title><link rel="stylesheet" href="../assets/style.css"></head><body><main>
-<p class="kicker">Research · {topic} · {n} of {total}</p>
-<h1>Page title</h1>
-<p>Opening paragraph: what this page covers and why it matters. <a class="src" href="https://...">[1]</a></p>
-
-<h2>Section</h2>
-<p>...</p>
-
-<h2>Primary source</h2>
-<p><a href="https://...">Title</a>. One line on why it is the best place to go deeper.</p>
-<p class="note">Ask follow-up questions in the session if anything here is unclear.</p>
-
-<nav class="foot"><a href="0001-prev.html">← Previous</a> · <a href="index.html">Overview</a> · <a href="glossary.html">Glossary</a> · <a href="sources.html">Sources</a> · <a href="0003-next.html">Next →</a></nav>
-</main></body></html>
-```
-
-### 6. Check and open
-
-- Check every internal link points to a file that exists, and every `[n]` matches an entry in `sources.html`.
-- Open the topic overview for the user with `xdg-open` (Linux) or `open` (macOS).
-- Report in a few lines: the pages written, the number of sources read, and any gaps or conflicting sources worth knowing.
+- Every internal link points to a file that exists, and every `[[n]]` number matches an entry in `sources.md` with the same URL.
+- Report in a few lines: the pages written, the number of sources read, any gaps or conflicting sources worth knowing, and how to view them (the Viewing section of `nv-docs-style`).
